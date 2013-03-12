@@ -1,0 +1,15 @@
+name             'robertlemke-webserver'
+maintainer       'Robert Lemke'
+maintainer_email 'rl@robertlemke.com'
+license          'All rights reserved'
+description      'Installs/Configures robertlemke-webserver'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.1.0'
+
+depends 'robertlemke-baseserver'
+depends 'php'
+depends 'apache2'
+depends 'composer'
+depends 'database'
+depends 'git'
+depends 'logrotate'
