@@ -34,7 +34,7 @@ end
 
 file "/var/www/index.php" do
   content "<?php echo(gethostname()); ?>"
-  owner "vagrant"
+  owner "root"
   group "www-data"
   mode 00775
 end
@@ -82,4 +82,13 @@ template "100-apc-additions.ini" do
   group "root"
   mode "0644"
   notifies :restart, resources(:service => "apache2")
+end
+
+#
+# COMPOSER
+#
+
+composer "/usr/local/bin" do
+  owner "root"
+  action [:install, :update]
 end
