@@ -20,6 +20,11 @@ include_recipe 'mysql::client'
 include_recipe 'mysql::server'
 include_recipe 'database::mysql'
 
+node.default['mysql']['tunable']['collation-server'] = "utf8_unicode_ci"
+node.default['mysql']['tunable']['max_connections'] = "200"
+node.default['mysql']['delete_anonymous_users'] = true
+node.default['mysql']['delete_passwordless_users'] = true
+
 #
 # APACHE
 #
