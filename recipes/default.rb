@@ -34,12 +34,6 @@ include_recipe 'apache2::logrotate'
 include_recipe 'apache2::mod_rewrite'
 
 node.default['apache']['contact'] = "hostmaster@robertlemke.net"
-node.default['apache']['prefork']['startservers'] = 16
-node.default['apache']['prefork']['minspareservers'] = 16
-node.default['apache']['prefork']['maxspareservers'] = 32
-node.default['apache']['prefork']['serverlimit'] = 400
-node.default['apache']['prefork']['maxclients'] = 400
-node.default['apache']['prefork']['maxrequestsperchild'] = 10000
 
 file "/var/www/index.html" do
   action :delete
