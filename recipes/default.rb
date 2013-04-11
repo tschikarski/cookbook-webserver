@@ -21,7 +21,7 @@ include_recipe 'mysql::server'
 include_recipe 'database::mysql'
 
 node.default['mysql']['tunable']['collation-server'] = "utf8_unicode_ci"
-node.default['mysql']['tunable']['max_connections'] = "200"
+node.default['mysql']['tunable']['max_connections'] = "150"
 node.default['mysql']['delete_anonymous_users'] = true
 node.default['mysql']['delete_passwordless_users'] = true
 
@@ -32,6 +32,14 @@ node.default['mysql']['delete_passwordless_users'] = true
 include_recipe 'apache2'
 include_recipe 'apache2::logrotate'
 include_recipe 'apache2::mod_rewrite'
+
+node.default['apache']['contact'] = "hostmaster@robertlemke.net"
+node.default['apache']['prefork']['startservers'] = 16
+node.default['apache']['prefork']['minspareservers'] = 16
+node.default['apache']['prefork']['maxspareservers'] = 32
+node.default['apache']['prefork']['serverlimit'] = 400
+node.default['apache']['prefork']['maxclients'] = 400
+node.default['apache']['prefork']['maxrequestsperchild'] = 10000
 
 file "/var/www/index.html" do
   action :delete
