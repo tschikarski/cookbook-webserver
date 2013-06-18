@@ -96,6 +96,5 @@ end
 #
 
 composer "/usr/local/bin" do
-  user "root"
   action [:install, :update]
 end
